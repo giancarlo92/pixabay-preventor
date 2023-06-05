@@ -1,0 +1,21 @@
+<div class="row m-3">
+  <div *ngFor="let hit of hits" class="col-md-3 col-sm-6">
+    <div class="card mb-2 text-center bg-dark" style="height: 350px;">
+      <app-card [hit]="hit"></app-card>
+    </div>
+  </div>
+  
+  <div class="col-12 text-center mt-3" *ngIf="temasServices.sinResultados && hits.length === 0">
+    No hay resultados
+  </div>
+
+  <mat-paginator *ngIf="hits.length > 0"
+                  (page)="handlePageEvent($event)"
+                  [length]="total"
+                  [pageSize]="paginator.per_page"
+                  [showFirstLastButtons]="false"
+                  [pageIndex]="pageIndex"
+                  aria-label="Select page">
+  </mat-paginator>
+  
+</div>
